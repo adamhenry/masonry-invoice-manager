@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  invoice_id: 1
+  description: MyText
+  item_type: MyString
+  rate: 
+  auanity: 
+  amount: 
+
+two:
+  invoice_id: 1
+  description: MyText
+  item_type: MyString
+  rate: 
+  auanity: 
+  amount: 

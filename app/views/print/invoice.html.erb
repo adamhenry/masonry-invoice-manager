@@ -1,0 +1,72 @@
+<div class="print-invoice-header">
+<table>
+	<tr>
+		<td>
+	<%= image_tag "Masonry_logo150px.jpg" %>
+		</td>
+		<td>
+	<h1> Stonecutters, Inc</h1>
+	<p>
+		1234 St.Helena Hwy <br />
+		St. Helena, CA
+	</p>
+		</td>
+	</tr>
+</table>
+</div>
+<div class="print-invoice-descripter">
+	<p>
+		Invoice <%=h @invoice.invoice_number %> <br />
+		for <br />
+		Dunber-Mifflin, Inc <br />
+		<%=h @invoice.job.name %>
+	</p>
+</div>
+<%-
+items = {}
+total = 0
+@invoice.invoice_items.each { |i| ( items[i.item_type] ||= [] ) << i }
+-%>
+
+<table>
+	<% items.each_pair do |invoice_type,invoice_group| %>
+		<tr> <td> <%= invoice_type %> </td> </tr>
+		<%- sub_total = 0 -%>
+		<%- for invoice_item in invoice_group -%>
+		<tr>
+			<td> </td>
+			<td> <%=h invoice_item.description %> </td>
+			<%- if( invoice_item.rate && invoice_item.quanity ) -%>
+				<td> <%=h format_amount( invoice_item.rate ) %> /hour </td>
+				<td> X <%=h invoice_item.quanity %> </td>
+				<td> <%=h format_amount( invoice_item.rate * invoice_item.quanity ) %> </td>
+				<%- sub_total += invoice_item.rate * invoice_item.quanity -%>
+			<%- else -%>
+				<td> </td>
+				<td> </td>
+				<td> <%=h format_amount( invoice_item.amount ) %> </td>
+				<%- sub_total += invoice_item.amount -%>
+			<%- end -%>
+		</tr>
+		<% end %>
+		<tr>
+			<td> </td>
+			<td class="subtotal" colspan="3"> Subtotal</td>
+			<td class="subtotal" > <%=h format_amount(sub_total) %></td>
+		</tr>
+		<%- total += sub_total -%>
+	<% end %>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> Total </td>
+			<td> <%=h format_amount(total) %></td>
+		</tr>
+</table>
+
+<div class="print-invoice-footer">
+	<p>
+	  <b>Date Due:</b> <%=h @invoice.due_date %>
+	</p>
+</div>

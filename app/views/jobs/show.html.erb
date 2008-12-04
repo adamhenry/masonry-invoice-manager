@@ -1,0 +1,36 @@
+<p>
+  <b>Name:</b>    <%=h @job.name %>
+  <br />
+  <b>Address:</b> <%=h @job.address %>
+</p>
+
+<h1>Listing invoices</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Status</th>
+    <th>Due date</th>
+    <th>Paid date</th>
+  </tr>
+
+<% for invoice in @job.invoices %>
+  <tr>
+    <td><%= link_to invoice.invoice_number, invoice %></td>
+    <td><%=h invoice.status %></td>
+    <td><%=h invoice.due_date ? invoice.due_date : "-"  %></td>
+    <td><%=h invoice.paid_date ? invoice.paid_date : "-" %></td>
+    <td><%= link_to 'X', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'New invoice', new_invoice_path + "/" + @job.id.to_s %>
+<br />
+<br />
+
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>
+
+

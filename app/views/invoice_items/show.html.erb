@@ -1,0 +1,33 @@
+<p>
+  <b>Invoice:</b>
+  <%= link_to @invoice_item.invoice.invoice_number, @invoice_item.invoice %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @invoice_item.description %>
+</p>
+
+<p>
+  <b>Item type:</b>
+  <%=h @invoice_item.item_type %>
+</p>
+
+<p>
+  <b>Rate:</b>
+  <%=h @invoice_item.rate %>
+</p>
+
+<p>
+  <b>Quanity:</b>
+  <%=h @invoice_item.quanity %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%=h @invoice_item.amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_invoice_item_path(@invoice_item) %> |
+<%= link_to 'Back', @invoice_item.invoice %>

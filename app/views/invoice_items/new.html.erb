@@ -1,0 +1,35 @@
+<h1>New invoice_item</h1>
+
+<% form_for(@invoice_item) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :invoice_id %> <%=h @invoice_item.invoice.invoice_number %>
+	 <%= f.hidden_field :invoice_id %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :item_type %>
+    <%= f.text_field :item_type %>
+  </p>
+  <p>
+    <%= f.label :rate %>
+    <%= f.text_field :rate %>
+  </p>
+  <p>
+    <%= f.label :quanity %>
+    <%= f.text_field :quanity %>
+  </p>
+  <p>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', invoice_items_path %>

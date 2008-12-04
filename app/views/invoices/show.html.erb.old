@@ -1,0 +1,28 @@
+<p>
+  <b>Job:</b>
+  <%=h @invoice.job_id %>
+</p>
+
+<p>
+  <b>Invoice number:</b>
+  <%=h @invoice.invoice_number %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @invoice.status %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%=h @invoice.due_date %>
+</p>
+
+<p>
+  <b>Paid date:</b>
+  <%=h @invoice.paid_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

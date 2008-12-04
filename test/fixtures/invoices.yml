@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  jod_id: 1
+  invoice_number: 1
+  status: MyString
+  due_date: 2008-11-30
+  paid_date: 2008-11-30
+
+two:
+  jod_id: 1
+  invoice_number: 1
+  status: MyString
+  due_date: 2008-11-30
+  paid_date: 2008-11-30

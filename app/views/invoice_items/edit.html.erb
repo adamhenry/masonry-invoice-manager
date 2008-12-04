@@ -1,0 +1,35 @@
+<h1>Editing invoice_item</h1>
+
+<% form_for(@invoice_item) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :invoice_id %><br />
+    <%= f.text_field :invoice_id %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :item_type %><br />
+    <%= f.text_field :item_type %>
+  </p>
+  <p>
+    <%= f.label :rate %><br />
+    <%= f.text_field :rate %>
+  </p>
+  <p>
+    <%= f.label :quanity %><br />
+    <%= f.text_field :quanity %>
+  </p>
+  <p>
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', @invoice_item %>

@@ -9,14 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081130213907) do
+ActiveRecord::Schema.define(:version => 20081205234330) do
 
   create_table "invoice_items", :force => true do |t|
     t.integer  "invoice_id"
     t.text     "description"
     t.string   "item_type"
     t.decimal  "rate",        :precision => 10, :scale => 2
-    t.decimal  "quanity",     :precision => 10, :scale => 3
+    t.decimal  "quantity",    :precision => 10, :scale => 3
     t.decimal  "amount",      :precision => 10, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20081130213907) do
     t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "client"
   end
 
 end

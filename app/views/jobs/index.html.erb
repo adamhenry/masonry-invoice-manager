@@ -3,12 +3,14 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Client</th>
     <th>Address</th>
   </tr>
 
 <% for job in @jobs %>
   <tr>
     <td><%=h job.name %></td>
+    <td><%=h job.client %></td>
     <td><%=h job.address %></td>
     <td><%= link_to 'Show', job %></td>
     <td><%= link_to 'Edit', edit_job_path(job) %></td>

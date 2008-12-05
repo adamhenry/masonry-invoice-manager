@@ -29,11 +29,11 @@ total = 0
 		<tr>
 			<td> </td>
 			<td> <%=h invoice_item.description %> </td>
-			<%- if( invoice_item.rate && invoice_item.quanity ) -%>
+			<%- if( invoice_item.rate && invoice_item.quantity ) -%>
 				<td> <%=h format_amount( invoice_item.rate ) %> /hour </td>
-				<td> X <%=h invoice_item.quanity %> </td>
-				<td> <%=h format_amount( invoice_item.rate * invoice_item.quanity ) %> </td>
-				<%- sub_total += invoice_item.rate * invoice_item.quanity -%>
+				<td> X <%=h invoice_item.quantity %> </td>
+				<td> <%=h format_amount( invoice_item.rate * invoice_item.quantity ) %> </td>
+				<%- sub_total += invoice_item.rate * invoice_item.quantity -%>
 			<%- else -%>
 				<td> </td>
 				<td> </td>

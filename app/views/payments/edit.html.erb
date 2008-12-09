@@ -1,0 +1,36 @@
+<h1>Editing payment</h1>
+
+<% form_for(@payment) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :invoice_id %><br />
+    <%= f.text_field :invoice_id %>
+  </p>
+  <p>
+    <%= f.label :payment_type %><br />
+    <%= f.text_field :payment_type %>
+  </p>
+  <p>
+    <%= f.label :check %><br />
+    <%= f.text_field :check %>
+  </p>
+  <p>
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </p>
+  <p>
+    <%= f.label :employee_name %><br />
+    <%= f.text_field :employee_name %>
+  </p>
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @payment %> |
+<%= link_to 'Back', payments_path %>

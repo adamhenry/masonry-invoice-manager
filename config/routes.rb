@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :payments
+
   map.connect 'print/invoice/:id', :controller => 'print', :action => 'invoice'
 
   map.resources :invoice_items

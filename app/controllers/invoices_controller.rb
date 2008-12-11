@@ -46,6 +46,10 @@ class InvoicesController < ApplicationController
   # GET /invoices/1/edit
   def edit
     @invoice = Invoice.find(params[:id])
+    #if( @invoice.current_status != "Open")
+      #flash[:notice] = 'Can only edit \'Open\' invoices.'
+      #redirect_to(@invoice)
+    #end
   end
 
   # POST /invoices

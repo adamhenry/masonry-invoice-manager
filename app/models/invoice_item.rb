@@ -5,7 +5,8 @@ class InvoiceItem < ActiveRecord::Base
     if( self.amount )
       self.amount
     else
-      self.rate * self.quantity
+      ( self.rate ||= 0 ) * ( self.quantity ||= 0 )
     end
   end
+
 end

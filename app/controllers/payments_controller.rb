@@ -46,7 +46,7 @@ class PaymentsController < ApplicationController
       if @payment.save
         flash[:notice] = 'Payment was successfully created.'
         format.html do
-           redirect_to(@payment)
+           redirect_to(@payment.invoice)
         end
         format.xml  { render :xml => @payment, :status => :created, :location => @payment }
       else

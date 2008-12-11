@@ -1,30 +1,30 @@
 <p>
+  <b>Invoice number:</b>
+  <%=h @invoice.invoice_number %>
+  <br />
   <b>Job:</b>
   <%=h @invoice.job.name %>
 </p>
 
 <p>
-  <b>Invoice number:</b>
-  <%=h @invoice.invoice_number %>
-</p>
-
-<p>
   <b>Status:</b>
   <%=h @invoice.status %>
-</p>
-
-<p>
+  <br />
+  <b>Total Due:</b>
+  $<%= @invoice.invoice_total %>
+  <br />
+  <%- if( @invoice.type != "Open" ) -%>
   <b>Due date:</b>
   <%=h @invoice.due_date %>
+  <%- end -%>
 </p>
 
 <p>
-  <b>Paid date:</b>
-  <%=h @invoice.paid_date %>
 </p>
 
 
-<h3>Items</h3>
+<h3><%= @invoice.invoice_items.length %> Items</h3>
+<%= link_to 'New Item', new_invoice_item_path + "/" + @invoice.id.to_s %>
 
 <table>
   <tr>
@@ -41,42 +41,47 @@
     <td><%= link_to 'X', invoice_item, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+  <tr>
+    <td colspan="2">Subtotal</td>
+    <td> $<%= @invoice.invoice_item_total %></td>
+  </tr>
 </table>
 
-<%= link_to 'New Item', new_invoice_item_path + "/" + @invoice.id.to_s %>
 <br />
 <br />
 
-<h3>Payments</h3>
+<h3><%= @invoice.payments.length%> Payments</h3>
+<%= link_to 'New Payment', new_payment_path + "/" + @invoice.id.to_s %>
 
 <table>
   <tr>
-    <th>Payment type</th>
+    <th>View</th>
+    <th>Payment</th>
     <th>Check</th>
     <th>Amount</th>
-    <th>Employee name</th>
+    <th>Employee</th>
     <th>Notes</th>
   </tr>
 
 <% for payment in @invoice.payments %>
   <tr>
-    <td><%=h payment.invoice_id %></td>
+    <td><%= link_to "Payment #{payment.id}", payment %></td>
     <td><%=h payment.payment_type %></td>
     <td><%=h payment.check %></td>
     <td><%=h payment.amount %></td>
     <td><%=h payment.employee_name %></td>
     <td><%=h payment.notes %></td>
-    <td><%= link_to 'Show', payment %></td>
-    <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
-    <td><%= link_to 'Destroy', payment, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'X', payment, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+  <tr>
+    <td colspan="3">Subtotal</td>
+    <td> $<%= @invoice.payment_total  %></td>
+  </tr>
 </table>
 
 <br />
 
-<%= link_to 'New Payment', new_payment_path + "/" + @invoice.id.to_s %>
-<br />
 <br />
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back', @invoice.job %>

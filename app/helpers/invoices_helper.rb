@@ -6,4 +6,17 @@ module InvoicesHelper
 			return "$" + amount.abs.to_s
 		end
 	end
+  
+  def invoice_types
+    [
+      [ "Open", "Open" ],
+      [ "Invoiced", "Invoiced" ],
+      [ "Closed", "Closed" ],
+      [ "Cancled", "Cancled" ]
+    ]
+  end
+  
+  def selector_switch
+  end
+
 end

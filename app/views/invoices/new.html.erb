@@ -6,7 +6,7 @@
   <p>
     <%= f.label :job_id %>
     <%=h @invoice.job.name %>
-	 <%= f.hidden_field :job_id %>
+	  <%= f.hidden_field :job_id %>
   </p>
   <p>
     <%= f.label :invoice_number %>
@@ -14,15 +14,11 @@
   </p>
   <p>
     <%= f.label :status %>
-    <%= f.text_field :status %>
+    <%= f.select :status, invoice_types %>
   </p>
   <p>
     <%= f.label :due_date %>
     <%= f.date_select :due_date %>
-  </p>
-  <p>
-    <%= f.label :paid_date %>
-    <%= f.date_select :paid_date %>
   </p>
   <p>
     <%= f.submit "Create" %>

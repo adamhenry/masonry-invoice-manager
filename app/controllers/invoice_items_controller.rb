@@ -25,16 +25,24 @@ class InvoiceItemsController < ApplicationController
   # GET /invoice_items/new.xml
   def new
     @invoice_item = InvoiceItem.new( :invoice_id => params[:id] )
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @invoice_item }
+    if( @invoice_item.invoice.current_status != "Open")
+      flash[:notice] = 'Can only edit invoice items of \'Open\' invoices.'
+      redirect_to(@invoice_item.invoice)
+    else
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @invoice_item }
+      end
     end
   end
 
   # GET /invoice_items/1/edit
   def edit
     @invoice_item = InvoiceItem.find(params[:id])
+    if( @invoice_item.invoice.current_status != "Open")
+      flash[:notice] = 'Can only edit invoice items of \'Open\' invoices.'
+      redirect_to(@invoice_item)
+    end
   end
 
   # POST /invoice_items

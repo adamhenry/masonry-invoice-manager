@@ -6,6 +6,7 @@
   <p>
     <%= f.label :invoice_number %>
     <%= @payment.invoice.invoice_number %>
+    <%= f.hidden_field :invoice_id %>
   </p>
   <p>
     <%= f.label :payment_type %>
@@ -22,6 +23,10 @@
   <p>
     <%= f.label :employee_name %>
     <%= f.text_field :employee_name %>
+  </p>
+  <p>
+    <%= f.label :date %>
+    <%= date_select( "payment", "date", :include_blank => true ) %>
   </p>
   <p>
     <%= f.label :notes %><br />

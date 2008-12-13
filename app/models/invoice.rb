@@ -25,10 +25,10 @@ class Invoice < ActiveRecord::Base
   end
 
   def current_status
-    if( self.status == "invoiced" && ( self.date_due - Time.now >= 30.days ) )
+    if( self.status == "Invoiced" && ( Date.today - self.due_date <= 30.days ) )
       "Late"
     else
-      self.status
+      self.status.to_s
     end
   end
 

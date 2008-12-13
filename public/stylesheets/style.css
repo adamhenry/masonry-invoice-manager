@@ -1,0 +1,67 @@
+html {background: #cbcaca;}
+body {margin: 0; font-family: arial, helvetica, sans-serif; font-size: 0.95em; color: #363636;}
+a:link, a:active, a:hover, a:visited {color: #cc5d03; text-decoration: none;}
+i {font-size: 0.9em;}
+.pad_left {padding-left: 15px;}
+.thin_row {height: 10px;}
+
+/* graph div */
+#this_one {margin-bottom: 10px;}
+#filter_list {float: left; min-height: 500px;}
+#filter_insert {float: left;}
+
+/* header */
+#header {
+  background: #363636;
+  width: 100%;
+  color: #cc5d03;
+  margin-bottom: 30px;
+  padding: 1em 0em;
+}
+
+#header div.img {
+  margin: 0 0 0 45%;
+  border: none;
+}
+
+div#header div.right {
+  float: right;
+  text-align: right;
+  margin-right: 15em;
+}
+
+div#header div.left {
+  margin-left: 15em;
+  float: left;
+}
+
+/* nav menu */
+#menu {padding-top: 50px; color: #fff; width: 600px; font-size: 80%;}
+#menu li {display: inline; font-weight: normal;/* padding-left: 10px; padding-right: 10px;*/}
+div#menu{float:left;/*width: 100%;padding-top:120px;background: #BBD9EE;*/}
+ul#nav,ul#nav li{list-style-type:none;margin:0;padding:0}
+ul#nav{margin-left: 20px;width:650px}
+ul#nav li{float:left;margin-right: 3px;text-align: center;}
+ul#nav a{float:left;width: 7em;padding: 5px 0;background: #888888;text-decoration:none;color: #363636}
+ul#nav a:hover{background: #dd7a31; color: #cbcaca}
+ul#nav li.activelink a,ul#nav li.activelink a:hover{background: #cbcaca;color: #003}
+/*#nav li.current {background: #cbcaca; padding-bottom: 10px; padding-top: 2px; -moz-border-radius: 5px 5px 0 0;}
+#nav li.other {background: #5c5c5c; padding-bottom: 8px; padding-top: 2px; -moz-border-radius: 5px 5px 0 0;}*/
+
+/* tables layout */
+table {border-collapse: collapse; margin: 10px 0 0 0;}
+table th, td {padding-right: 15px;}
+table tr.back:hover {background: #ddd;}
+/*table#header {padding: 0 0 10px 0;}*/
+table#filter_header {margin: 0 0 10px 0;}
+table td.bold {font-weight: bold;}
+
+/* main page layout */
+#content {width: 650px; margin-left: auto; margin-right: auto;}
+#filter_content {margin-left: 35px; margin-right: auto;}
+h1 {font-size: 1.3em; color: #cc5d03;}
+
+/* new bottling form layout */
+/*#bottling_input {float:left; margin-right: 10px;}
+#bottling_bottom {clear:both; margin: 10px 0 10px 0;}
+table#bottling_bottom tr td {padding: 3px 15px 3px 3px;}*/

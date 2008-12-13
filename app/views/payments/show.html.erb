@@ -1,30 +1,22 @@
 <p>
-  <b>Invoice:</b>
-  <%=h @payment.invoice_id %>
-</p>
-
-<p>
-  <b>Payment type:</b>
+  <strong>Invoice:</strong>
+  <%= link_to @payment.invoice.invoice_number, @payment.invoice %>
+  <br />
+  <strong>Payment type:</strong>
   <%=h @payment.payment_type %>
-</p>
-
-<p>
-  <b>Check:</b>
+  <br />
+  <strong>Check:</strong>
   <%=h @payment.check %>
-</p>
-
-<p>
-  <b>Amount:</b>
+  <br />
+  <strong>Amount:</strong>
   <%=h @payment.amount %>
-</p>
-
-<p>
-  <b>Employee name:</b>
+  <br />
+  <strong>Employee name:</strong>
   <%=h @payment.employee_name %>
 </p>
 
 <p>
-  <b>Notes:</b>
+  <strong>Notes:</strong>
   <%=h @payment.notes %>
 </p>
 

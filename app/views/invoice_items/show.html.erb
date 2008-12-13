@@ -1,31 +1,28 @@
 <p>
-  <b>Invoice:</b>
+  <strong>Invoice:</strong>
   <%= link_to @invoice_item.invoice.invoice_number, @invoice_item.invoice %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @invoice_item.description %>
-</p>
-
-<p>
-  <b>Item type:</b>
+  <br />
+  <strong>Item type:</strong>
   <%=h @invoice_item.item_type %>
-</p>
-
-<p>
-  <b>Rate:</b>
+  <br />
+  <strong>Rate:</strong>
   <%=h @invoice_item.rate %>
-</p>
-
-<p>
-  <b>Quanity:</b>
+  <br />
+  <strong>Quanity:</strong>
   <%=h @invoice_item.quantity %>
+  <br />
+  <strong>Amount:</strong>
+  <%=h @invoice_item.amount %>
 </p>
 
 <p>
-  <b>Amount:</b>
-  <%=h @invoice_item.amount %>
+  <strong>Total:</strong>
+  <%=h @invoice_item.total %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%=h @invoice_item.description %>
 </p>
 
 

@@ -6,12 +6,41 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Jobs: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'style' %>
 </head>
 <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
+<div id="header">
 
+  <%- if !@job.nil? -%>
+  <div class="right">
+    <strong><%=h @job.name %></strong>
+    <br />
+    <strong>Job number:</strong>
+    <%=h @job.id %>
+  </div>  
+
+
+  <div class="left">
+    <strong>Status:</strong>
+    <br />
+    <strong>Total Due:</strong>
+    <br />
+    <strong>Due date:</strong>
+  </div>
+  <%- end -%>
+
+  <div class="img">
+    <%= image_tag "Masonry_logo_small.jpg", :alt =>  "Masonry Logo" %>
+  </div>
+
+</div>
+
+  <p style="color: green"><%= flash[:notice] %></p>
+
+<div id="content">
 <%= yield  %>
+</div>
 
 </body>
 </html>

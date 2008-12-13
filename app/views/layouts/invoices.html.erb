@@ -6,12 +6,47 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Invoices: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'style' %>
 </head>
 <body>
 
+<div id="header">
+
+  <%- if !@invoice.nil? -%>
+  <div class="right">
+    <strong><%=h @invoice.job.name %></strong>
+    <br />
+    <strong>Invoice number:</strong>
+    <%=h @invoice.invoice_number %>
+  </div>  
+
+  <div class="left">
+    <strong>Status:</strong>
+    <%=h @invoice.current_status %>
+    <br />
+    <%- if( @invoice.status != "Closed" || @invoice.status != "Cancled" ) -%>
+    <strong>Total Due:</strong>
+    $<%= @invoice.invoice_total %>
+    <%- end -%>
+    <br />
+    <%- if( @invoice.status != "Open" ) -%>
+    <strong>Due date:</strong>
+    <%=h @invoice.due_date %>
+    <%- end -%>
+  </div>
+  <%- end -%>
+
+  <div class="img">
+    <%= image_tag "Masonry_logo_small.jpg", :alt =>  "Masonry Logo" %>
+  </div>
+
+</div>
+
 <p style="color: green"><%= flash[:notice] %></p>
 
+<div id="content">
 <%= yield  %>
+</div>
 
 </body>
 </html>

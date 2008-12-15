@@ -6,7 +6,7 @@
     <%=h @invoice.current_status %>
     <br />
     <strong> Date Due: </strong>
-    <%=h @invoice.due_date.strftime("%A, %B %d, %Y") %>
+    <%=h @invoice.due_date.strftime("%A, %B %d, %Y") rescue "-" %>
     <br />
     <strong> Total Invoice Items: $</strong>
     <%=h @invoice.invoice_item_total %>

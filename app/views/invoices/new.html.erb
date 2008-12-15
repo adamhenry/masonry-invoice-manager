@@ -4,25 +4,31 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :job_id %>
-    <%=h @invoice.job.name %>
-	  <%= f.hidden_field :job_id %>
+    <%=   f.label :job_id %>
+    <%- if @invoice.job.nil? -%>
+    <%=  f.select :job_id, @jobs_array %>
+    <%- else -%>
+    <%=h  @invoice.job.name %>
+	  <%=   f.hidden_field :job_id %>
+    <%- end -%>
   </p>
   <p>
     <%= f.label :invoice_number %>
-    <%= f.text_field :invoice_number %>
+    <%=h @invoice.invoice_number %>
+	  <%= f.hidden_field :invoice_number%>
   </p>
   <p>
     <%= f.label :status %>
-    <%= f.select :status, invoice_types %>
+    <%=h @invoice.status %>
+	  <%= f.hidden_field :status%>
   </p>
   <p>
-    <%= f.label :due_date %>
-    <%= f.date_select :due_date %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
+    <%= f.submit "Confirm Invoice Creation" %>
   </p>
 <% end %>
 
-<%= link_to 'To Job', @invoice.job %>
+<%- if !@invoice.job.nil? -%>
+<%=   link_to 'To Job', @invoice.job %>
+<%- else -%>
+<%=   link_to 'To Invoices', invoices_path %>
+<%- end -%>

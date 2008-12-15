@@ -14,6 +14,8 @@ class InvoicesController < ApplicationController
   # GET /invoices/1.xml
   def show
     @invoice = Invoice.find(params[:id])
+    @payments = {}
+    @invoice.payments.each { |p| @payments[p.payment_type] ||= [] << p }
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,7 +37,17 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   # GET /invoices/new.xml
   def new
-    @invoice = Invoice.new( :job_id => params[:id] )
+    @invoice = Invoice.new(
+      :job_id => params[:id],
+      :status => "Open",
+      :invoice_number => ( Invoice.all.map{ |i| i.invoice_number }.sort.reverse[0] ||= 0).to_i + 1
+    )
+    if @invoice.job.nil?
+      @jobs_array = Job.all.map{ |j| [ j.name, j.id ] }
+    end
+
+    #raise @invoice.inspect
+    #raise @jobs_array.inspect
 
     respond_to do |format|
       format.html # new.html.erb

@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Invoice</th>
-    <th>Payment type</th>
+    <th>Payment</th>
     <th>Check</th>
     <th>Amount</th>
     <th>Employee name</th>
@@ -12,15 +12,13 @@
 
 <% for payment in @payments %>
   <tr>
-    <td><%=h payment.invoice_id %></td>
+    <td><%= link_to payment.invoice.invoice_number, payment %></td>
     <td><%=h payment.payment_type %></td>
     <td><%=h payment.check %></td>
     <td><%=h payment.amount %></td>
     <td><%=h payment.employee_name %></td>
-    <td><%=h payment.notes %></td>
-    <td><%= link_to 'Show', payment %></td>
-    <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
-    <td><%= link_to 'Destroy', payment, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h truncate(payment.notes, 15, "...")%></td>
+    <td><%= link_to 'X', payment, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

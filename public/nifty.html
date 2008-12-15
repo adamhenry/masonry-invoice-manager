@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Nifty Corners with jQuery</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="HAPedit 3.1">
+<style type="text/css">
+body{padding: 20px;background: #FFF;color: #3C0012;text-align: center;
+    font:85%/1.45 "Lucida Sans Unicode","Lucida Grande",Arial,sans-serif}
+h1,h2{margin: 0;padding: 0 10px;letter-spacing: -1px;font-weight:100;color: #FFF}
+h1{font-size: 200%}
+h2{font-size: 140%}
+p{margin:0;padding: 0 10px 1em}
+div#container{width:450px;margin: 0 auto;padding:10px 0;text-align:left}
+div#content{float:left;width:300px;padding:10px 0;background: #FFBD00}
+div#nav{float:right;width:145px;padding:10px 0;background:#42B4AC}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+
+<script type="text/javascript" src="nifty.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $("div#content,div#nav").nifty("same-height");
+});
+</script>
+</head>
+<body>
+<div id="container">
+<div id="content">
+<h1>Nifty Corners</h1>
+<p>This is the popular Nifty Corners ported to jQuery.</p>
+<h2>How to use</h2>
+<p>You call the plugin like this: $("query").nifty(options)</p>
+<p>For documentation on available options, please read the original documentation page of <a href='http://www.html.it/articoli/niftycube/index.html'>Nifty Corners Cube</a>. Have fun!</p>
+
+</div>
+<div id="nav">
+<h2>Simple. Just Javascript and CSS.</h2>
+<p>Aoioeou eeeu ueeiuiii uoauiioi uae eoeoioe ouiui oieouoo uioo uaieeoe oe eouoiea a oou uiu.</p>
+</div>
+</div>
+</body>
+</html>

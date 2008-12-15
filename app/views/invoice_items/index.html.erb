@@ -12,15 +12,13 @@
 
 <% for invoice_item in @invoice_items %>
   <tr>
-    <td><%=h invoice_item.invoice_id %></td>
+    <td><%= link_to invoice_item.invoice.invoice_number, invoice_item %></td>
     <td><%=h invoice_item.description %></td>
     <td><%=h invoice_item.item_type %></td>
     <td><%=h invoice_item.rate %></td>
     <td><%=h invoice_item.quantity %></td>
     <td><%=h invoice_item.amount %></td>
-    <td><%= link_to 'Show', invoice_item %></td>
-    <td><%= link_to 'Edit', edit_invoice_item_path(invoice_item) %></td>
-    <td><%= link_to 'Destroy', invoice_item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'X', invoice_item, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

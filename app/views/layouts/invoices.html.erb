@@ -14,7 +14,7 @@
 
   <%- if !@invoice.nil? -%>
   <div class="right">
-    <strong><%=h @invoice.job.name raise "no job"%></strong>
+    <strong><%=h @invoice.job.name rescue "no job"%></strong>
     <br />
     <strong>Invoice number:</strong>
     <%=h @invoice.invoice_number %>

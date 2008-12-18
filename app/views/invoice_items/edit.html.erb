@@ -1,4 +1,4 @@
-<h1>Editing invoice_item</h1>
+<h1>Editing Invoice Item</h1>
 
 <% form_for(@invoice_item) do |f| %>
   <%= f.error_messages %>
@@ -9,7 +9,7 @@
   </p>
   <p>
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, text_area_options %>
   </p>
   <p>
     <%= f.label :item_type %><br />

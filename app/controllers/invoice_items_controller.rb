@@ -83,10 +83,15 @@ class InvoiceItemsController < ApplicationController
   # DELETE /invoice_items/1.xml
   def destroy
     @invoice_item = InvoiceItem.find(params[:id])
-    @invoice_item.destroy
+    return_to = @invoice_item.invoice
+    if( @invoice_item.invoice.can_delete?)
+      @invoice_item.destroy
+    else
+      flash[:notice] = 'Can only destroy invoice items of \'Open\' invoices.'
+    end
 
     respond_to do |format|
-      format.html { redirect_to(invoice_items_url) }
+      format.html { redirect_to(request().referer || invoice_items_url) }
       format.xml  { head :ok }
     end
   end

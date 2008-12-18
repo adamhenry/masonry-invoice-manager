@@ -18,4 +18,8 @@ class Payment < ActiveRecord::Base
     end
   end
 
+  def can_delete?
+    true
+  end
+
 end

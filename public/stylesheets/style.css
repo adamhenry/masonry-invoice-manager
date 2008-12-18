@@ -85,20 +85,64 @@ ul#nav li.activelink a,ul#nav li.activelink a:hover {
 /*#nav li.current {background: #cbcaca; padding-bottom: 10px; padding-top: 2px; -moz-border-radius: 5px 5px 0 0;}
 #nav li.other {background: #5c5c5c; padding-bottom: 8px; padding-top: 2px; -moz-border-radius: 5px 5px 0 0;}*/
 
+/* invoice layout */
+div#invoice_summery {
+  float: left;
+  padding-bottom: 1em;
+}
+
+div#invoice_payment_summery {
+  margin-left: 2em;
+  float: left;
+  text-align: right;
+}
+
+div#invoice_action_list {
+  float: left;
+  margin: 0.5em;
+}
+
+div#invoice_item_rate_quantity_entry_block {
+  border: solid black 1px;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+div#invoice_item_amount_entry_block {
+  border: solid black 1px;
+  position: absolute;
+  left: 1em;
+  top: 1em;
+}
+
+div#invoice_item_total_entry_block {
+  border: solid black 1px;
+  position: relative;
+  height: 4em;
+}
+
+div#invoice_item_total_entry_block label {
+  float: left;
+}
+
+div#invoice_item_total_entry_block input {
+  border: solid black 1px;
+  background-color: green;
+  float: right;
+}
+
+h3 {
+  clear: left;
+}
+
 /* tables layout */
-table {border-collapse: collapse; margin: 10px 0 0 0;}
+/*table {border-collapse: collapse; margin: 10px 0 0 0;} */
+table {border-collapse: collapse; margin-left: auto; margin-right: auto;}
 table th, td {padding-right: 15px;}
 table tr.back:hover {background: #ddd;}
-/*table#header {padding: 0 0 10px 0;}*/
-table#filter_header {margin: 0 0 10px 0;}
-table td.bold {font-weight: bold;}
 
 /* main page layout */
 #content {width: 650px; margin-left: auto; margin-right: auto;}
-#filter_content {margin-left: 35px; margin-right: auto;}
 h1 {font-size: 1.3em; color: #cc5d03;}
 
-/* new bottling form layout */
-/*#bottling_input {float:left; margin-right: 10px;}
-#bottling_bottom {clear:both; margin: 10px 0 10px 0;}
-table#bottling_bottom tr td {padding: 3px 15px 3px 3px;}*/

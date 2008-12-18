@@ -1,4 +1,4 @@
-<h1>Listing invoice_items</h1>
+<h1>Listing Invoice Items</h1>
 
 <table>
   <tr>
@@ -18,7 +18,11 @@
     <td><%=h invoice_item.rate %></td>
     <td><%=h invoice_item.quantity %></td>
     <td><%=h invoice_item.amount %></td>
-    <td><%= link_to 'X', invoice_item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'X',
+              invoice_item,
+              :confirm => "Deleting Invoice Item.\nAre you sure?",
+              :method => :delete if invoice_item.can_delete?
+    %></td>
   </tr>
 <% end %>
 </table>

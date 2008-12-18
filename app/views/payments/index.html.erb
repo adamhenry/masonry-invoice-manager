@@ -1,4 +1,4 @@
-<h1>Listing payments</h1>
+<h1>Listing Payments</h1>
 
 <table>
   <tr>
@@ -12,8 +12,8 @@
 
 <% for payment in @payments %>
   <tr>
-    <td><%= link_to payment.invoice.invoice_number, payment %></td>
-    <td><%=h payment.payment_type %></td>
+    <td><%= link_to payment.invoice.invoice_number, payment.invoice %></td>
+    <td><%= link_to payment.payment_type.titleize, payment %></td>
     <td><%=h payment.check %></td>
     <td><%=h payment.amount %></td>
     <td><%=h payment.employee_name %></td>

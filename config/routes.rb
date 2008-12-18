@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :invoices
   map.connect 'invoices/new/:id', :controller => 'invoices', :action => 'new'
   map.connect 'invoices/print/:id', :controller => 'invoices', :action => 'print'
+  map.connect 'invoices/invoice/:id', :controller => 'invoices', :action => 'invoice'
 
   map.resources :jobs
 

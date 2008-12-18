@@ -25,11 +25,31 @@ class Invoice < ActiveRecord::Base
   end
 
   def current_status
-    if( self.status == "Invoiced" && ( Date.today - self.due_date <= 30.days ) )
+    if( self.status == "Invoiced" && self.due_date && ( Date.today - self.due_date <= 30.days ) )
       "Late"
     else
       self.status.to_s
     end
+  end
+
+  def can_invoice?
+    return false if self.nil? || self.status.nil?
+    ["Open"].include? self.status
+  end
+
+  def can_close?
+    return false if self.nil? || self.status.nil?
+    ["Invoiced"].include? self.status
+  end
+
+  def can_cancel?
+    return false if self.nil? || self.status.nil?
+    ["Invoiced", "Closed"].include? self.status
+  end
+
+  def can_delete?
+    return false if self.nil? || self.status.nil?
+    ["Open"].include? self.status
   end
 
 end

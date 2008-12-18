@@ -15,7 +15,7 @@ class InvoicesController < ApplicationController
   def show
     @invoice = Invoice.find(params[:id])
     @payments = {}
-    @invoice.payments.each { |p| @payments[p.payment_type] ||= [] << p }
+    @invoice.payments.each { |p| ( @payments[p.payment_type] ||= [] ) << p }
 
     respond_to do |format|
       format.html # show.html.erb
@@ -102,11 +102,22 @@ class InvoicesController < ApplicationController
   # DELETE /invoices/1.xml
   def destroy
     @invoice = Invoice.find(params[:id])
-    @invoice.destroy
+    if( @invoice.status == "Open" )
+      @invoice.destroy
+    else
+      flash[:notice] = 'Cannot Destroy Invoices that are not open'
+    end
 
     respond_to do |format|
-      format.html { redirect_to(invoices_url) }
+      format.html { redirect_to(request().referer || invoices_url) }
       format.xml  { head :ok }
     end
   end
+
+  # PUT /invoices/invoice/1
+  def invoice
+    @invoice = Invoice.find(params[:id])
+    @invoice.status = "Invoiced"
+  end
+
 end

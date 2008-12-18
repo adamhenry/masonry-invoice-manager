@@ -1,4 +1,4 @@
-  <p>
+  <div id="invoice_summery">
     <strong> Job: </strong>
     <%=h @invoice.job.name %>
     <br />
@@ -7,7 +7,12 @@
     <br />
     <strong> Date Due: </strong>
     <%=h @invoice.due_date.strftime("%A, %B %d, %Y") rescue "-" %>
-    <br />
+    <%- if false -%>
+      <form> <input type="submit" value="submit" url="url" />
+      <form/> 
+    <%- end -%>
+  </div>
+  <div id="invoice_payment_summery">
     <strong> Total Invoice Items: $</strong>
     <%=h @invoice.invoice_item_total %>
     <br />
@@ -16,10 +21,14 @@
     <br />
     <strong> Due: $</strong>
     <%=h @invoice.invoice_total %>
-    <br />
-  </p>
+  </div>
+  <div id="invoice_action_list">
+    <%= render_invoice_action_buttons @invoice %>
+  </div>
+
 <h3>Items: <%= @invoice.invoice_items.length %></h3>
 
+<%- if @invoice.invoice_items.length > 0 -%>
 <table>
   <tr>
     <th>Description</th>
@@ -32,7 +41,11 @@
     <td><%= link_to truncate( invoice_item.description, 20, "..." ), invoice_item %></td>
     <td><%=h invoice_item.item_type %></td>
     <td><%=h "$" + invoice_item.total.to_s %></td>
-    <td><%= link_to 'X', invoice_item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'X',
+              invoice_item,
+              :confirm => "Deleteing invoice #{invoice_item.invoice.invoice_number}/nAre you sure?",
+              :method => :delete if invoice_item.can_delete?
+    %></td>
   </tr>
 <% end %>
   <tr>
@@ -40,12 +53,14 @@
     <td> $<%= @invoice.invoice_item_total %></td>
   </tr>
 </table>
+<%- end -%>
 
 <br />
 <%= link_to 'New Item', new_invoice_item_path + "/" + @invoice.id.to_s %>
 
-<h3>Payments Made: <%= @invoice.payments.length%></h3>
+<h3>Payments Made: <%= @payments.length%></h3>
 
+<%- if @payments.length > 0 -%>
 <table>
   <tr>
     <th></th>
@@ -54,10 +69,10 @@
     <th>Amount</th>
     <th>Notes</th>
   </tr>
+  <%- @payments.each do |payment_type, payments| -%>
+  <tr> <th><%= payment_type.titleize%></th> </tr>
 
-  <tr> <th>Check</th> </tr>
-
-<% for payment in @invoice.payments.select{ |p| p.payment_type == "check" } %>
+    <%- payments.each do |payment| -%>
   <tr>
     <td></td>
     <td><%= link_to payment.check, payment %></td>
@@ -66,19 +81,9 @@
     <td><%=h truncate( payment.notes, 15, "...") %></td>
     <td><%= link_to 'X', payment, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
-<% end %>
+    <%- end -%>
   <tr> <td></td> </tr>
-  <tr> <th>Credit</th> </tr>
-<% for payment in @invoice.payments.select{ |p| p.payment_type == "credit" } %>
-  <tr>
-    <td></td>
-    <td><%= link_to payment.check, payment %></td>
-    <td><%=h payment.employee_name %></td>
-    <td><%=h payment.amount %></td>
-    <td><%=h truncate( payment.notes, 15, "...") %></td>
-    <td><%= link_to 'X', payment, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <%- end -%>
   <tr> <td><br/></td> </tr>
   <tr>
     <th>Subtotal</th>
@@ -86,6 +91,7 @@
     <td> $<%= @invoice.payment_total  %></td>
   </tr>
 </table>
+<%- end -%>
 
 <%= link_to 'New Payment', new_payment_path + "/" + @invoice.id.to_s %>
 <br />

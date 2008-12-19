@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'invoices/invoice/:id', :controller => 'invoices', :action => 'invoice'
 
   map.resources :jobs
+  map.root :controller => 'jobs'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -1,6 +1,6 @@
 class Invoice < ActiveRecord::Base
-	has_many :invoice_items
-	has_many :payments
+	has_many :invoice_items, :dependent => :destroy
+	has_many :payments, :dependent => :destroy
 	belongs_to :job
 
   validates_presence_of :job, :status

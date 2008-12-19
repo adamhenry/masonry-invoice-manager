@@ -22,7 +22,7 @@
     <td><%=h invoice.status %></td>
     <td><%=h invoice.due_date ? invoice.due_date : "-"  %></td>
     <td><%=h invoice.paid_date ? invoice.paid_date : "-" %></td>
-    <td><%= link_to 'X', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td> <%= render_invoice_action_buttons invoice %></td>
   </tr>
 <% end %>
 </table>

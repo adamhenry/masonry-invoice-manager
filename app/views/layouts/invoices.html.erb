@@ -40,14 +40,7 @@
     <%= image_tag "Masonry_logo_small.jpg", :alt =>  "Masonry Logo" %>
   </div>
   
-  <div id="menu">
-    <ul id="nav">
-      <li class=""> <%= link_to "Jobs", jobs_path %> </li>
-      <li class="activelink"> <%= link_to "Invoices", invoices_path %> </li>
-      <li class=""> <%= link_to "Items", invoice_items_path %> </li>
-      <li class=""> <%= link_to "Payments", payments_path %> </li>
-    </ul>
-  </div>
+  <%= render :partial => "layouts/nav_bar", :locals => { :activelink => "Invoices" } %>
 
 </div>
 

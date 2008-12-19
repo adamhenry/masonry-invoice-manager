@@ -40,6 +40,8 @@
     <%= image_tag "Masonry_logo_small.jpg", :alt =>  "Masonry Logo" %>
   </div>
 
+  <%= render :partial => "layouts/nav_bar", :locals => { :activelink => "Payments" } %>
+
 </div>
 
 <p style="color: green"><%= flash[:notice] %></p>

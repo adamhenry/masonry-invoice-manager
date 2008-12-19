@@ -4,22 +4,10 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :job_id %> <%= @invoice.job_id %>
+    Job: <%= @invoice.job.name %>
   </p>
   <p>
     <%= f.label :invoice_number %> <%= f.text_field :invoice_number %>
-  </p>
-  <p>
-    <%= f.label :status %>
-    <%- if @invoice.status.nil? -%>
-    <%=   f.select :status, invoice_types %>
-    <%- else -%>
-    <%=   f.select :status, invoice_types.reject{ |e| e[0] == "Open" } %>
-    <%- end -%>
-  </p>
-  <p>
-    <%= f.label :due_date %><br />
-    <%= f.date_select :due_date %>
   </p>
   <p>
     <%= f.submit "Update" %>

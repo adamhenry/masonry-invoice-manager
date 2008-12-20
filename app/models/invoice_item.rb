@@ -12,9 +12,6 @@ class InvoiceItem < ActiveRecord::Base
   end
 
   def validate
-    #errors.add(:amount,  " must be a number") if !amount.nil? && !number?(amount)
-    #errors.add(:rate,    " must be a number") if !rate.nil? && !number?(rate)
-    #errors.add(:quantity," must be a number") if !quantity.nil? && !number?(quantity)
     errors.add(:amount,"can not be included with rate or quantity.") if !amount.nil? && ( !rate.nil? || !quantity.nil?)
     if !rate.nil? && quantity.nil?
       errors.add(:quantity,"must be included with rate")

@@ -11,21 +11,26 @@
     <%= f.label :description %><br />
     <%= f.text_area :description, text_area_options %>
   </p>
-  <p>
-    <%= f.label :item_type %>
-    <%= f.text_field :item_type %>
-  </p>
-  <p>
-      <%= f.label :rate %>
-      <%= f.text_field :rate %>
+  <div id="invoice_item_entry">
+    <div id="invoice_item_type_entry">
+      <div class="left"> <%= f.label :item_type %> </div>
+      <div class="right"> <%= f.text_field :item_type %> </div>
       <br />
-      <%= f.label :quantity %>
-      <%= f.text_field :quantity %>
-  </p>
-  <p>
-      <%= f.label :amount %>
-      <%= f.text_field :amount %>
-  </p>
+    </div>
+    <div id="invoice_item_rate_quantity_entry">
+      <div class="left"> <%= f.label :rate %> </div>
+      <div class="right"> <%= f.text_field :rate %> </div>
+      <br />
+      <div class="left"> <%= f.label :quantity %> </div>
+      <div class="right"> <%= f.text_field :quantity %> </div>
+      <br />
+    </div>
+    <div id="invoice_item_amount_entry">
+      <div class="left"> <%= f.label :amount %> </div>
+      <div class="right"> <%= f.text_field :amount %> </div>
+      <br />
+    </div>
+  </div>
   <p>
     <%= f.submit "Create" %>
   </p>

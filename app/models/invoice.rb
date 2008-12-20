@@ -4,7 +4,6 @@ class Invoice < ActiveRecord::Base
 	belongs_to :job
 
   validates_presence_of :job, :status
-  validates_numericality_of :invoice_number
 
   private
   def validates

@@ -102,34 +102,18 @@ div#invoice_action_list {
   margin: 0.5em;
 }
 
-div#invoice_item_rate_quantity_entry_block {
-  border: solid black 1px;
-  position: absolute;
-  right: 1em;
-  top: 1em;
-}
-
-div#invoice_item_amount_entry_block {
-  border: solid black 1px;
-  position: absolute;
-  left: 1em;
-  top: 1em;
-}
-
-div#invoice_item_total_entry_block {
-  border: solid black 1px;
-  position: relative;
-  height: 4em;
-}
-
-div#invoice_item_total_entry_block label {
+div#invoice_item_entry .right {
   float: left;
+  width: 5em;
 }
 
-div#invoice_item_total_entry_block input {
-  border: solid black 1px;
-  background-color: green;
-  float: right;
+div#invoice_item_entry .left {
+  float: left;
+  width: 5em;
+}
+
+div#invoice_item_entry br {
+  clear: both;
 }
 
 h3 {

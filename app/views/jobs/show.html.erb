@@ -13,15 +13,14 @@
     <th>Number</th>
     <th>Status</th>
     <th>Due date</th>
-    <th>Paid date</th>
+    <th>Actions</th>
   </tr>
 
 <% for invoice in @job.invoices %>
   <tr>
     <td><%= link_to invoice.invoice_number, invoice %></td>
     <td><%=h invoice.status %></td>
-    <td><%=h invoice.due_date ? invoice.due_date : "-"  %></td>
-    <td><%=h invoice.paid_date ? invoice.paid_date : "-" %></td>
+    <td class="date"><%=h invoice.due_date.strftime("%b %d, %Y") unless invoice.due_date.nil?%></td>
     <td> <%= render_invoice_action_buttons invoice %></td>
   </tr>
 <% end %>

@@ -1,35 +1,33 @@
 <div class="print-invoice-header">
-<table>
-	<tr>
-		<td>
-	<%= image_tag "Masonry_logo150px.jpg" %>
-		</td>
-		<td>
-	<h1> Stonecutters, Inc</h1>
-	<p>
-		1234 St.Helena Hwy <br />
-		St. Helena, CA
-	</p>
-		</td>
-	</tr>
-</table>
+  <table>
+    <tr>
+      <td>
+    <%= image_tag "red_brick.png" %>
+      </td>
+      <td>
+    <h1> Red Brick, Construction</h1>
+    <p>
+      1234 St.Helena Hwy <br />
+      St. Helena, CA
+    </p>
+      </td>
+    </tr>
+  </table>
 </div>
 <div class="print-invoice-descripter">
 	<p>
+		<%=h @invoice.job.name %><br />
 		Invoice <%=h @invoice.invoice_number %> <br />
 		for <br />
-		Dunber-Mifflin, Inc <br />
-		<%=h @invoice.job.name %>
+		<%=h @invoice.job.client %><br />
+    <%=h @invoice.job.address%><br />
+    <%=h @invoice.job.city%>, <%=h @invoice.job.state%> <%=h @invoice.job.zipcode%> 
 	</p>
 </div>
-<%-
-items = {}
-total = 0
-@invoice.invoice_items.each { |i| ( items[i.item_type] ||= [] ) << i }
--%>
+<%- total = 0 -%>
 
 <table>
-	<% items.each_pair do |invoice_type,invoice_group| %>
+	<% @items.each_pair do |invoice_type,invoice_group| %>
 		<tr> <td> <%= invoice_type %> </td> </tr>
 		<%- sub_total = 0 -%>
 		<%- for invoice_item in invoice_group -%>
@@ -37,14 +35,14 @@ total = 0
 			<td> </td>
 			<td> <%=h invoice_item.description %> </td>
 			<%- if( invoice_item.rate && invoice_item.quantity ) -%>
-				<td> <%=h format_amount( invoice_item.rate ) %> /hour </td>
-				<td> X <%=h invoice_item.quantity %> </td>
-				<td> <%=h format_amount( invoice_item.rate * invoice_item.quantity ) %> </td>
+				<td class="number"> <%=h format_to_dollars( invoice_item.rate ) %> /hour X </td>
+				<td class="number"> <%=h invoice_item.quantity %> </td>
+				<td class="number"> <%=h format_to_dollars( invoice_item.rate * invoice_item.quantity ) %> </td>
 				<%- sub_total += invoice_item.rate * invoice_item.quantity -%>
 			<%- else -%>
 				<td> </td>
 				<td> </td>
-				<td> <%=h format_amount( invoice_item.amount ) %> </td>
+				<td class="number"> <%=h format_to_dollars( invoice_item.amount ) %> </td>
 				<%- sub_total += invoice_item.amount -%>
 			<%- end -%>
 		</tr>
@@ -52,21 +50,15 @@ total = 0
 		<tr>
 			<td> </td>
 			<td class="subtotal" colspan="3"> Subtotal</td>
-			<td class="subtotal" > <%=h format_amount(sub_total) %></td>
+			<td class="subtotal"> <%=h format_to_dollars(sub_total) %></td>
 		</tr>
 		<%- total += sub_total -%>
 	<% end %>
 		<tr>
 			<td> </td>
-			<td> </td>
+			<td> <strong>Date Due:</strong> <%=h @invoice.due_date %> </td>
 			<td> </td>
 			<td> Total </td>
-			<td> <%=h format_amount(total) %></td>
+			<td class="number"> <%=h format_to_dollars(total) %></td>
 		</tr>
 </table>
-
-<div class="print-invoice-footer">
-	<p>
-	  <b>Date Due:</b> <%=h @invoice.due_date %>
-	</p>
-</div>

@@ -98,8 +98,10 @@ div#invoice_payment_summery {
 }
 
 div#invoice_action_list {
-  float: left;
-  margin: 0.5em;
+  clear: both;
+  width: 120px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 div#invoice_item_entry .right {

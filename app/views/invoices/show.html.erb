@@ -6,10 +6,12 @@
     <%=h @invoice.current_status %>
     <br />
     <strong> Date Due: </strong>
-    <%=h @invoice.due_date.strftime("%A, %B %d, %Y") rescue "-" %>
-    <%- if false -%>
-      <form> <input type="submit" value="submit" url="url" />
-      <form/> 
+    <%- unless @invoice.due_date.nil? -%>
+    <%=h @invoice.due_date.strftime("%A, %B %d, %Y")%>
+    <br />
+    <%=  link_to "Printable Invoice", :controller => :print, :action => :invoice, :id => @invoice.id %>
+    <%- else -%>
+    -
     <%- end -%>
   </div>
   <div id="invoice_payment_summery">
@@ -23,11 +25,12 @@
     <%=h format_to_dollars @invoice.invoice_total %>
   </div>
   <div id="invoice_action_list">
+    <strong> Invoice Actions </strong>
+    <br />
     <%= render_invoice_action_buttons @invoice %>
   </div>
 
 <h3>Items: <%= @invoice.invoice_items.length %></h3>
-
 <%- if @invoice.invoice_items.length > 0 -%>
 <table>
   <tr>

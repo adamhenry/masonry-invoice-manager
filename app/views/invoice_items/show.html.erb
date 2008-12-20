@@ -2,29 +2,30 @@
   <strong>Invoice:</strong>
   <%= link_to @invoice_item.invoice.invoice_number, @invoice_item.invoice %>
   <br />
+</p>
+<p>
   <strong>Item type:</strong>
   <%=h @invoice_item.item_type %>
   <br />
-  <strong>Rate:</strong>
-  <%=h @invoice_item.rate %>
+  <strong>Description</strong>
   <br />
-  <strong>Quanity:</strong>
-  <%=h @invoice_item.quantity %>
-  <br />
-  <strong>Amount:</strong>
-  <%=h @invoice_item.amount %>
-</p>
-
-<p>
-  <strong>Total:</strong>
-  <%=h @invoice_item.total %>
-</p>
-
-<p>
-  <strong>Description:</strong>
   <%=h @invoice_item.description %>
 </p>
-
+<p>
+  <%- if !@invoice_item.amount.nil? -%>
+  <strong>Amount:</strong>
+  <%=h format_to_dollars @invoice_item.amount %>
+  <%- else -%>
+  <strong>Rate:</strong>
+  <%=h format_to_dollars @invoice_item.rate %>
+  <br />
+  <strong>Quanity:</strong>
+  <%=h format_to_dollars @invoice_item.quantity %>
+  <br />
+  <strong>Total:</strong>
+  <%=h format_to_dollars @invoice_item.total %>
+  <%- end -%>
+</p>
 
 <%= link_to 'Edit', edit_invoice_item_path(@invoice_item) %> |
 <%= link_to 'To Invoice', @invoice_item.invoice %>

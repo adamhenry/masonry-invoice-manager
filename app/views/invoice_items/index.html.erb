@@ -8,16 +8,18 @@
     <th>Rate</th>
     <th>Quanity</th>
     <th>Amount</th>
+    <th>Total</th>
   </tr>
 
 <% for invoice_item in @invoice_items %>
   <tr>
-    <td><%= link_to invoice_item.invoice.invoice_number, invoice_item %></td>
-    <td><%=h invoice_item.description %></td>
+    <td class="dollar"><%= link_to invoice_item.invoice.invoice_number, invoice_item.invoice %></td>
+    <td><%= link_to truncate(invoice_item.description, 15), invoice_item %></td>
     <td><%=h invoice_item.item_type %></td>
-    <td><%=h invoice_item.rate %></td>
-    <td><%=h invoice_item.quantity %></td>
-    <td><%=h invoice_item.amount %></td>
+    <td class="dollar"><%=h format_to_dollars invoice_item.rate if !invoice_item.rate.nil?%></td>
+    <td class="dollar"><%=h invoice_item.quantity if !invoice_item.quantity.nil? %></td>
+    <td class="dollar"><%=h format_to_dollars invoice_item.amount if !invoice_item.amount.nil?%></td>
+    <td class="dollar"><%=h format_to_dollars invoice_item.total %></td>
     <td><%= link_to 'X',
               invoice_item,
               :confirm => "Deleting Invoice Item.\nAre you sure?",

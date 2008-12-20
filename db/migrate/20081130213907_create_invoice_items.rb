@@ -5,7 +5,7 @@ class CreateInvoiceItems < ActiveRecord::Migration
       t.text :description
       t.string :item_type
       t.decimal :rate, :precision => 10, :scale => 2
-      t.decimal :quantity, :precision => 10, :scale => 3
+      t.integer :quantity
       t.decimal :amount, :precision => 10, :scale => 2
 
       t.timestamps

@@ -9,7 +9,7 @@
   <%=h @payment.check %>
   <br />
   <strong>Amount:</strong>
-  <%=h @payment.amount %>
+  <%=h format_to_dollars @payment.amount %>
   <br />
   <strong>Employee name:</strong>
   <%=h @payment.employee_name %>

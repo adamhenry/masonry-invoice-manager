@@ -12,10 +12,10 @@
 
 <% for payment in @payments %>
   <tr>
-    <td><%= link_to payment.invoice.invoice_number, payment.invoice %></td>
+    <td class="dollar"><%= link_to payment.invoice.invoice_number, payment.invoice %></td>
     <td><%= link_to payment.payment_type.titleize, payment %></td>
-    <td><%=h payment.check %></td>
-    <td><%=h payment.amount %></td>
+    <td class="dollar"><%=h payment.check %></td>
+    <td class="dollar"><%=h format_to_dollars payment.amount %></td>
     <td><%=h payment.employee_name %></td>
     <td><%=h truncate(payment.notes, 15, "...")%></td>
     <td><%= link_to 'X', payment, :confirm => 'Are you sure?', :method => :delete %></td>

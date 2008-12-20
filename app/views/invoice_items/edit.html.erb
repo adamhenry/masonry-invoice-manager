@@ -4,8 +4,8 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :invoice_id %><br />
-    <%= f.text_field :invoice_id %>
+    <%= f.label :invoice %>
+    <%=h @invoice_item.invoice.invoice_number %>
   </p>
   <p>
     <%= f.label :description %><br />

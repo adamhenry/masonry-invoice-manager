@@ -2,18 +2,24 @@
 
 <table>
   <tr>
-    <th>Invoice Number</th>
+    <th>Invoice</th>
     <th>Job</th>
     <th>Status</th>
+    <th>Total</th>
+    <th>Payed</th>
+    <th>Due</th>
     <th>Due date</th>
   </tr>
 
 <% for invoice in @invoices %>
   <tr>
-    <td><%= link_to invoice.invoice_number, invoice %></td>
-    <td><%=h invoice.job.name %></td>
+    <td class="dollar"><%= link_to invoice.invoice_number, invoice %></td>
+    <td class="job_name"><%= link_to truncate(invoice.job.name, 20), invoice.job %></td>
     <td><%=h invoice.current_status %></td>
-    <td><%=h invoice.due_date %></td>
+    <td class="dollar"><%=h format_to_dollars invoice.invoice_item_total %></td>
+    <td class="dollar"><%=h format_to_dollars invoice.payment_total %></td>
+    <td class="dollar"><%=h format_to_dollars invoice.invoice_total %></td>
+    <td class="date"><%=h invoice.due_date.strftime("%b %d, %Y") unless invoice.due_date.nil?%></td>
     <td><%= link_to 'X', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

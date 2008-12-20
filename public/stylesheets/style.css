@@ -125,6 +125,10 @@ h3 {
 table {border-collapse: collapse; margin-left: auto; margin-right: auto;}
 table th, td {padding-right: 15px;}
 table tr.back:hover {background: #ddd;}
+table td.dollar{ text-align: right; }
+table td.number{ text-align: right; }
+table td.date{ white-space: nowrap; }
+table td.job_name{ white-space: nowrap; }
 
 /* main page layout */
 #content {width: 650px; margin-left: auto; margin-right: auto;}

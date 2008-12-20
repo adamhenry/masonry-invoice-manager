@@ -25,8 +25,16 @@ class InvoiceItemsController < ApplicationController
   # GET /invoice_items/new.xml
   def new
     @invoice_item = InvoiceItem.new( :invoice_id => params[:id] )
-    if( @invoice_item.invoice.current_status != "Open")
-      flash[:notice] = 'Can only edit invoice items of \'Open\' invoices.'
+    @invoices = Invoice.find(:all).map{ |i| [ i.invoice_number.to_s + " :" + i.job.name, i.id ] }
+    @types = {
+       "Labor" => "Labor",
+       "Materials" => "Materials",
+       "Equipment" => "Equipment",
+       "Fee" => "Fee",
+       "Credit" => "Credit",
+    }
+    if( !@invoice_item.invoice.nil? && @invoice_item.invoice.current_status != "Open")
+      flash[:notice] = 'Can only create new invoice items on \'Open\' invoices.'
       redirect_to(@invoice_item.invoice)
     else
       respond_to do |format|
@@ -39,6 +47,13 @@ class InvoiceItemsController < ApplicationController
   # GET /invoice_items/1/edit
   def edit
     @invoice_item = InvoiceItem.find(params[:id])
+    @types = {
+       "Labor" => "Labor",
+       "Materials" => "Materials",
+       "Equipment" => "Equipment",
+       "Fee" => "Fee",
+       "Credit" => "Credit",
+    }
     if( @invoice_item.invoice.current_status != "Open")
       flash[:notice] = 'Can only edit invoice items of \'Open\' invoices.'
       redirect_to(@invoice_item)

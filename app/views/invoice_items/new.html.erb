@@ -4,8 +4,12 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :invoice_id %> <%=h @invoice_item.invoice.invoice_number %>
-	 <%= f.hidden_field :invoice_id %>
+    <%- if @invoice_item.invoice.nil? -%>
+    <%= f.label :invoice %>: <%= f.select :invoice_id, @invoices %>
+    <%- else -%>
+    <%= f.label :invoice %> <%=h @invoice_item.invoice.invoice_number %>
+    <%= f.hidden_field :invoice_id %>
+    <%- end -%>
   </p>
   <p>
     <%= f.label :description %><br />
@@ -14,7 +18,7 @@
   <div id="invoice_item_entry">
     <div id="invoice_item_type_entry">
       <div class="left"> <%= f.label :item_type %> </div>
-      <div class="right"> <%= f.text_field :item_type %> </div>
+      <div class="right"> <%= f.select :item_type, @types %> </div>
       <br />
     </div>
     <div id="invoice_item_rate_quantity_entry">
@@ -36,4 +40,4 @@
   </p>
 <% end %>
 
-<%= link_to 'To Invoice', @invoice_item.invoice %>
+<%= link_to 'To Invoice', @invoice_item.invoice unless @invoice_item.invoice.nil?%>

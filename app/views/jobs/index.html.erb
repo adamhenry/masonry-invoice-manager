@@ -11,7 +11,7 @@
   <tr>
     <td><%= link_to job.name, job %></td>
     <td><%=h job.client %></td>
-    <td><%=h job.address %></td>
+    <td><%=h job.address %><br /><%=h job.city %>, <%=h job.state %> <%=h job.zipcode %></td>
     <td><%= link_to 'X',
               job,
               :confirm => 'Are you sure?',
